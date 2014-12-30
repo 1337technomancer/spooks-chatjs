@@ -80,7 +80,9 @@ $(function() {
  if(url.url == "stop"){
   $("#youtube")[0].innerHTML = ""
  } else {
+     if (CLIENT.get('mute') != 'on'){
   $("#youtube")[0].innerHTML = "<iframe width=\"420\" height=\"345\" src=\"https://www.youtube.com/embed/" + url.url +"?autoplay=1\" frameborder=\"0\" allowfullscreen></iframe>"
+}
  }
     });
 
