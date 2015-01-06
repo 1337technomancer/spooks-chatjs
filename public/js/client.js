@@ -353,14 +353,14 @@ $(function() {
         unread = 0;
     });
     $(window).focus(function() {
-        $("#icon").attr("href","http://spooks.me/public/img/icon2.ico");
+        $("#icon").attr("href","http://this.spooks.me/img/icon2.ico");
         blurred = false;
         updateTitle();
     });
     CLIENT.on('message', function(message) {
         if (blurred) {
             if(check.test(message.message)){
-                $("#icon").attr("href","http://spooks.me/public/img/icon.ico");
+                $("#icon").attr("href","http://this.spooks.me/img/icon.ico");
             }
             unread++;
             updateTitle();
