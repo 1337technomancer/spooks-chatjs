@@ -1250,7 +1250,8 @@ parser = {
                     blacklisted = img[2].indexOf(BLACKLIST[i]) >= 0;
                 }
                 if (!blacklisted) {
-                    str = str.replace(img[0], img[1] + '<img src="' + img[2] + '" onload="scrollToBottom()" onerror="imageError(this)" /></a>');
+                	var regex = new RegExp(img[0], "g");
+                    str = str.replace(regex, img[1] + '<img src="' + img[2] + '" onload="scrollToBottom()" onerror="imageError(this)" /></a>');
                 }
             }
         
