@@ -1242,7 +1242,7 @@ parser = {
             str = str.replace(this.replink, '<a target="_blank" href="' + link + '">' + link + '</a>');
         }
 
-            var img = /(<a target="_blank" href="[^"]+?">)([^<]+?\.(?:gif|jpg|jpeg|png|bmp))<\/a>/i.exec(str);
+            var img = /(<a target="_blank" href="[^"]+?">)([^<]+?\.(?:gif|jpg|jpeg|png|bmp))<\/a>/ig.exec(str);
 
             if (img && CLIENT.get('images') == 'on') {
                 var blacklisted = false;
