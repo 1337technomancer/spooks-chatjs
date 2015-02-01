@@ -181,7 +181,7 @@ function createChannel(io, channelName) {
             ban : {
 		role : 'admin',
                 params : [ 'nick', 'message' ],
-                handler : function(dao, dbsender, params) {
+                handler : function(dao, dbuser, params) {
                     var msg = dbsender.get("nick")+" has banned "+params.nick;
 		    var role = ['god','super','admin','mod','basic','mute','sub'];
                     if(params.message.trim())
