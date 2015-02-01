@@ -626,13 +626,13 @@ $(function() {
 		}
 		break
             default:
-                parsed = parser.parseLinks(message.message);
+                parsed = parser.parseLinks(message.message)
                 break;
             }
             $('<span class="content"></span>').html(parsed || message.message).appendTo(content);
         }
         if (message.type == 'spoken-message' && CLIENT.get('mute') != 'on' && CLIENT.get('mute_speak') != 'on') {
-	var voices = ['default','yoda','clever'];
+	var voices = ['default','yoda','clever', 'old', 'loli', 'whisper', 'badguy', 'aussie', 'terrorist', 'japan', 'alien', 'nigga', 'demon'];
 	    if(voices.indexOf(message.voice) > 0){
 	       var uri = message.source
 	    } else {
