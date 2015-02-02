@@ -1251,6 +1251,9 @@ parser = {
                 }
                 if (!blacklisted) {
                 	var regex = new RegExp(img[0], "g");
+                	alert(img[0]);
+                	alert(img[1]);
+                	alert(img[2]);
                     str = str.replace(regex, img[1] + '<img src="' + img[2] + '" onload="scrollToBottom()" onerror="imageError(this)" /></a>');
                 }
             }
