@@ -1241,19 +1241,24 @@ parser = {
                 link = links[i].replace(/^(.)(.+)$/, '$2');
             str = str.replace(this.replink, '<a target="_blank" href="' + link + '">' + link + '</a>');
         }
-
-            var img = /(<a target="_blank" href="[^"]+?">)([^<]+?\.(?:gif|jpg|jpeg|png|bmp))<\/a>/ig.exec(str);
+var images = new Array;
+          while (img = /(<a target="_blank" href="[^"]+?">)([^<]+?\.(?:gif|jpg|jpeg|png|bmp))<\/a>/ig.exec(str)){
+          	
+          	images.push(img[0]);
+          	images.push(img[1]);
+          	images.push(img[2]);
+          }
 
             if (img && CLIENT.get('images') == 'on') {
                 var blacklisted = false;
                 for ( var i = 0; i < BLACKLIST.length && !blacklisted; i++) {
-                    blacklisted = img[2].indexOf(BLACKLIST[i]) >= 0;
+                    blacklisted = images[2].indexOf(BLACKLIST[i]) >= 0;
                 }
                 if (!blacklisted) {
-                	var regex = new RegExp(img[0], "g");
-                	console.log(img.length)
+                	var regex = new RegExp(images[0], "g");
+                	console.log(images.length)
                 	
-                    str = str.replace(regex, img[1] + '<img src="' + img[2] + '" onload="scrollToBottom()" onerror="imageError(this)" /></a>');
+                    str = str.replace(regex, images[1] + '<img src="' + images[2] + '" onload="scrollToBottom()" onerror="imageError(this)" /></a>');
                 }
             }
         
