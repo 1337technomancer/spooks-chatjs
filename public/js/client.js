@@ -1241,25 +1241,17 @@ parser = {
                 link = links[i].replace(/^(.)(.+)$/, '$2');
             str = str.replace(this.replink, '<a target="_blank" href="' + link + '">' + link + '</a>');
         }
-// var images = new Array;
-images = /(<a target="_blank" href="[^"]+?">)([^<]+?\.(?:gif|jpg|jpeg|png|bmp))<\/a>/ig.exec(str);
-          //while (img = /(<a target="_blank" href="[^"]+?">)([^<]+?\.(?:gif|jpg|jpeg|png|bmp))<\/a>/ig.exec(str)){
-          	
-          //	images.push(img[0]);
-          //	images.push(img[1]);
-          //	images.push(img[2]);
-          //}
 
-            if (images.length > 0 && CLIENT.get('images') == 'on') {
+            var img = /(<a target="_blank" href="[^"]+?">)([^<]+?\.(?:gif|jpg|jpeg|png|bmp))<\/a>/ig.exec(str);
+
+            if (img && CLIENT.get('images') == 'on') {
                 var blacklisted = false;
                 for ( var i = 0; i < BLACKLIST.length && !blacklisted; i++) {
-                    blacklisted = images[2].indexOf(BLACKLIST[i]) >= 0;
+                    blacklisted = img[2].indexOf(BLACKLIST[i]) >= 0;
                 }
                 if (!blacklisted) {
-                	var regex = new RegExp(images[0], "g");
-                	console.log(images.length)
-                	
-                    str = str.replace(regex, images[1] + '<img src="' + images[2] + '" onload="scrollToBottom()" onerror="imageError(this)" /></a>');
+                	var regex = new RegExp(img[0], "g");
+                    str = str.replace(regex, img[1] + '<img src="' + img[2] + '" onload="scrollToBottom()" onerror="imageError(this)" /></a>');
                 }
             }
         
