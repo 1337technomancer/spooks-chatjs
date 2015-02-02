@@ -1251,7 +1251,7 @@ parser = {
                 }
                 if (!blacklisted) {
                 	var regex = new RegExp(img[0], "g");
-                	
+                	console.log(img.length)
                 	
                     str = str.replace(regex, img[1] + '<img src="' + img[2] + '" onload="scrollToBottom()" onerror="imageError(this)" /></a>');
                 }
