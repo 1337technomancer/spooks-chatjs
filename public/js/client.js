@@ -1241,15 +1241,16 @@ parser = {
                 link = links[i].replace(/^(.)(.+)$/, '$2');
             str = str.replace(this.replink, '<a target="_blank" href="' + link + '">' + link + '</a>');
         }
-var images = new Array;
-          while (img = /(<a target="_blank" href="[^"]+?">)([^<]+?\.(?:gif|jpg|jpeg|png|bmp))<\/a>/ig.exec(str)){
+// var images = new Array;
+images = /(<a target="_blank" href="[^"]+?">)([^<]+?\.(?:gif|jpg|jpeg|png|bmp))<\/a>/ig.exec(str);
+          //while (img = /(<a target="_blank" href="[^"]+?">)([^<]+?\.(?:gif|jpg|jpeg|png|bmp))<\/a>/ig.exec(str)){
           	
-          	images.push(img[0]);
-          	images.push(img[1]);
-          	images.push(img[2]);
-          }
+          //	images.push(img[0]);
+          //	images.push(img[1]);
+          //	images.push(img[2]);
+          //}
 
-            if (img && CLIENT.get('images') == 'on') {
+            if (images && CLIENT.get('images') == 'on') {
                 var blacklisted = false;
                 for ( var i = 0; i < BLACKLIST.length && !blacklisted; i++) {
                     blacklisted = images[2].indexOf(BLACKLIST[i]) >= 0;
